@@ -43,19 +43,19 @@ export default function TextForm(props) {
         <div className="mb-3">
         <textarea className="form-control" value={text} onChange={handleOnCHange} placeholder='Enter the text'  style={{backgroundColor:props.mode==='light'?'white':'black', color:props.mode==='light'?'black':'white'}} id="myBox" rows="8"></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to UpperCase</button>
-        <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert to LowerCase</button>
-        <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
-        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove ExtraSpaces</button>
-        <button className="btn btn-primary mx-2" onClick={handleDeClick}>Clear All</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2  my-2" onClick={handleUpClick}>Convert to UpperCase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleLoClick}>Convert to LowerCase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy Text</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove ExtraSpaces</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleDeClick}>Clear All</button>
         </div>
     </div>
     <div className="container my-1" style={{color:props.mode==='light'?'black':'white'}}>
       <h4>Text Summary</h4>
-      <p>{text.split(" ").length} words and {text.length} characters</p>
+      <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
       <p>{0.008 * text.split(" ").length} Minutes to read</p>
       <h4>Preview</h4>
-      <p>{text.length>0?text:"Enter something in the TextBox to preview here...."}</p>
+      <p>{text.length>0?text:"Nothing to preview.."}</p>
     </div>
     </>
   )

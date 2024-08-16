@@ -2,14 +2,14 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Textform from './components/TextForm';
-// import About from './components/About';
+import About from './components/About';
 import React, {useState} from 'react'
 import Alert from './components/Alert';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
   const [alert, setAlert] = useState(null)
@@ -42,20 +42,19 @@ function App() {
   }
   return (
     <>
-    {/* <Router> */}
+    <Router>
     <Navbar title="Snay's Hub" aboutText='About Us' mode={mode} toggleMode={toggleMode}/>
     <Alert alert={alert}/>
     <div className="container my-3 mx-3" mode={mode}>
-    <Textform heading="Enter the text for analysis below" showAlert={showAlert} mode={mode} />
-    {/* <Routes>
-          <Route path="/about" element={<About />}>
+     <Routes>
+          <Route path="/about" element={<About  mode={mode}  />}>
           </Route>
-          <Route path="/" element={<Textform heading="Enter the text for analysis below" showAlert={showAlert} mode={mode} />}> 
+          <Route path="/" element={<Textform heading="Try TextUtils-Word COunter, CHaracter Counter, Remove extra spaces" showAlert={showAlert} mode={mode} />}> 
           </Route>
     </Routes>
-  
-    </Router> */}
       </div>
+  
+    </Router> 
     </>
   );
 }
